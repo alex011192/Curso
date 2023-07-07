@@ -15,19 +15,19 @@ public class Main {
 	
 	public static void main(String[] args) {
 ///hola
-	    Empleado emp1 = new Empleado(
-	        "Alejandro ", "holaa", "Encina",
-	        new Direccion("Amazonita", "Saltillo", "Coahuila", "Ankara", 896), 30, 1, 20000, null);
-
-	    Empleado emp2 = new Empleado(
-	        "Pedro ", "Plata", "Oyervides",
-	        new Direccion("Calle 10", "Saltillo", "Coahuila", "Morelos", 110), 31, 2, 30000, null);
-
-	    Cliente cliente1 = new Cliente(1,"Karla", "Tapia", "Ruiz", new Direccion("Amazonita", "Saltillo", "Coahuila", "Ankara", 896),
-	    27, null);
-
-	    Cliente cliente2 = new Cliente(2,"Raul", "Garcia", "Flores", new Direccion("Amazonita", "Saltillo", "Coahuila", "Ankara", 896),
-	        27, null);
+//	    Empleado emp1 = new Empleado(
+//	        "Alejandro ", "holaa", "Encina",
+//	        new Direccion("Amazonita", "Saltillo", "Coahuila", "Ankara", 896), 30, 1, 20000, null);
+//
+//	    Empleado emp2 = new Empleado(
+//	        "Pedro ", "Plata", "Oyervides",
+//	        new Direccion("Calle 10", "Saltillo", "Coahuila", "Morelos", 110), 31, 2, 30000, null);
+//
+//	    Cliente cliente1 = new Cliente(1,"Karla", "Tapia", "Ruiz", new Direccion("Amazonita", "Saltillo", "Coahuila", "Ankara", 896),
+//	    27, null);
+//
+//	    Cliente cliente2 = new Cliente(2,"Raul", "Garcia", "Flores", new Direccion("Amazonita", "Saltillo", "Coahuila", "Ankara", 896),
+//	        27, null);
 
 //	    List<Cliente> lista = new ArrayList<>();
 //	    lista.add(cliente1);
@@ -38,27 +38,102 @@ public class Main {
 //	    emp1.setClientes(lista2);
 
 	    EmpleadoService empleadoService = new EmpleadoServiceImpl();
-	    empleadoService.addEmpleado(emp1);
-	    empleadoService.addEmpleado(emp2);
+//	    empleadoService.addEmpleado(emp1);
+//	    empleadoService.addEmpleado(emp2);
 	    
 	    ClienteService clienteService = new ClienteServiceImpl();
-	    clienteService.addCliente(cliente1);
-	    clienteService.addCliente(cliente2);
+//	    clienteService.addCliente(cliente1);
+//	    clienteService.addCliente(cliente2);
 
 	    //agregar empleados y clientes 
 	    // statico como contador para el numero de empleado
 	    //clase comparable(sets) y comparator
 	    
+
+    	String nombreEmp = "";
+    	String apellidoPat = "";
+    	String apellidoMat = "";
+    	int edad = 0;
+    	String calle = "";
+    	int numCalle = 0;
+    	String colonia = "";
+    	String ciudad = "";
+    	String estado = "";
+    	double sueldo = 0;
+	    
 	    Scanner myObj = new Scanner(System.in);
 	    int seleccion;
 	    do {
 	    	System.out.println("Ingrese el numero de la accion:");
-		    System.out.println("1 - Asignar cliente a empleado");
-		    System.out.println("2- Imprimir datos");
-		    System.out.println("3- Salir\n");
+	    	System.out.println("1-Ingresar nuevo empelado");
+	    	System.out.println("2-Ingresar nuevo cliente");
+		    System.out.println("3- Asignar cliente a empleado");
+		    System.out.println("4- Imprimir datos");
+		    System.out.println("5- Salir\n");
 		    seleccion = myObj.nextInt();
 		    switch(seleccion) {
-		    case 1 : //asignar cliente a empleado
+		    case 1 :
+		    	System.out.println("----Ingrese la siguiente informacion---");
+		    	
+		    	System.out.println("-> Nombre del empleado:");
+		    	nombreEmp = myObj.next();
+		    	System.out.println("-> Apellido paterno:");
+		    	apellidoPat = myObj.next();
+		    	System.out.println("-> Apellido Materno:");
+		    	apellidoMat = myObj.next();
+		    	System.out.println("-> Edad:");
+		    	edad = myObj.nextInt();
+		    	System.out.println("-> Calle:");
+		    	calle = myObj.next();
+		    	System.out.println("-> numero calle:");
+		    	numCalle = myObj.nextInt();
+		    	System.out.println("-> Colonia:");
+		    	colonia = myObj.next();
+		    	System.out.println("-> Ciudad:");
+		    	ciudad = myObj.next();
+		    	System.out.println("-> Estado:");
+		    	estado = myObj.next();
+		    	System.out.println("-> sueldo:");
+		    	sueldo = myObj.nextDouble();
+		    	
+		    	Empleado emp = new Empleado(
+		    			nombreEmp, apellidoPat, apellidoMat,
+		    	        new Direccion(calle, ciudad, estado, colonia, numCalle), edad, Empleado.contEmp, sueldo, null);
+		    	Empleado.contEmp++;
+		    	empleadoService.addEmpleado(emp);
+		    	System.out.println("----Emeplado guardado---\n");
+		    	break;
+		    case 2 :	
+		    	
+		    	System.out.println("----Ingrese la siguiente informacion---");
+		    	System.out.println("-> Nombre del cliente:");
+		    	String nombreCliente = myObj.next();
+		    	System.out.println("-> Apellido paterno:");
+		    	apellidoPat = myObj.next();
+		    	System.out.println("-> Apellido Materno:");
+		    	 apellidoMat = myObj.next();
+		    	System.out.println("-> Edad:");
+		    	edad = myObj.nextInt();
+		    	System.out.println("-> Calle:");
+		    	calle = myObj.next();
+		    	System.out.println("-> numero calle:");
+		    	numCalle = myObj.nextInt();
+		    	System.out.println("-> Colonia:");
+		    	colonia = myObj.next();
+		    	System.out.println("-> Ciudad:");
+		    	ciudad = myObj.next();
+		    	System.out.println("-> Estado:");
+		    	estado = myObj.next();
+		    	
+			    Cliente cliente = new Cliente(Cliente.contadorCliente,nombreCliente, apellidoPat, apellidoMat, new Direccion(calle,ciudad,estado, colonia, numCalle),
+			    edad, null);
+			    
+			    Cliente.contadorCliente++;
+			    clienteService.addCliente(cliente);
+		    	System.out.println("----Cliente guardado---\n");
+		    	break;
+		    
+		    case 3 : //asignar cliente a empleado
 		    			boolean validEmp = true;
 		    			boolean valiClient = true;
 		    			do {
@@ -94,18 +169,18 @@ public class Main {
 		    			}while(validEmp);
 		    	
 		    	break;
-		    case 2 : //Imprimir datos
+		    case 4 : //Imprimir datos
 		    			imprimeDatos(empleadoService);
 		    	
 		    	break;
 		    default:
-		    	if(seleccion != 3) {
+		    	if(seleccion != 5) {
 		    		System.out.println("Seleccione una opcion valida\n\n");
 		    	}else {
 		    		System.out.println("Adios");
 		    		}
 		    }
-	    }while(seleccion != 3);
+	    }while(seleccion != 5);
 
 	  }
 	
